@@ -1,0 +1,27 @@
+<?php foreach ($elementsForDisplay as $setName => $setElements): ?>
+<div class="element-set" style="padding: 25px 0px 0px 25px;">
+    <?php if ($showElementSetHeadings): ?>
+    <!--h2><?php echo html_escape(__($setName)); ?></h2-->
+    <?php endif; ?>
+    <table>
+    <?php foreach ($setElements as $elementName => $elementInfo): ?>
+    	<!-- div id="<?php echo text_to_id(html_escape("$setName $elementName")); ?>" class="element"-->
+	<!--h2><?php echo $elementName; ?></h2-->
+
+	<?php $no_titles = array('Title', 'Type', 'Creator');
+	if ( in_array($elementName, $no_titles) ){
+	<?php //if( $elementName <> 'Title' && $elementName <> 'Type' && $elementName <> 'Creator' ){ ?>
+	<tr>
+		<td width="25%"> <h4><?php echo html_escape(__($elementName)); ?></h4> </td>
+		<td> <?php foreach ($elementInfo['texts'] as $text): ?>
+        	    <div class="element-text"><?php echo $text; ?></div>
+	        <?php endforeach; ?> </td>
+	</tr>
+	<?php } ?>
+
+	<!--/div--><!-- end element -->
+    <?php endforeach; ?>
+    </table>
+
+</div><!-- end element-set -->
+<?php endforeach;

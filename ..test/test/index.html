@@ -1,0 +1,28 @@
+<html>
+
+<head>
+	<title>Searcher</title>
+</head>
+
+<body>
+	<form method="get" action="http://biblioteca.fundarlabs.org.mx/demo/Search/Results" name="searchForm" id="searchForm" class="search">
+		<label for="searchForm_lookfor" class="offscreen">Your search terms</label>
+		<input id="searchForm_lookfor" type="text" name="lookfor" size="40" value="" class="autocomplete searcher:Solr typeSelector:searchForm_type"/>
+		<label for="searchForm_type" class="offscreen">Search Type</label>
+		<select id="searchForm_type" name="type" data-native-menu="false">
+			<option value="AllFields">All Fields</option>
+			<option value="Title">Title</option>
+			<option value="Author">Author</option>
+			<option value="Subject">Subject</option>
+			<option value="CallNumber">Call Number</option>
+			<option value="ISN">ISBN/ISSN</option>
+			<option value="tag">Tag</option>
+		</select>
+		<input type="submit" name="submit" value="Find"/>
+		<a href="/demo/Search/Advanced" class="small">Advanced</a>
+	</form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mexico</title>
+  <style>
+    .boundary {
+      fill: #fff;
+      stroke: #999;
+      stroke-linejoin: round;
+    }
+
+    .boundary :hover {
+      fill: rgba(250,70,30,0.8);
+      stroke: #fff;
+    }
+
+    svg {
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ccc;
+    }
+
+
+    #tooltip{
+      position: absolute;
+      z-index: 2;
+      background: rgba(250,250,250,1);
+      width:250px;
+      min-height:10px;
+      font-size: 14px;
+      padding:15px;
+      top:-300px;
+      border:1px solid #999;
+      left:-300px;
+      font-family: "Lucida Grande", sans-serif;
+      display: : none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="tooltip"></div>
+  <section id="text"></section>
+  <!--table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>numero</th>
+            <th>folio</th>
+            <th>entidad</th>
+            <th>unidad_medica</th>
+            <th>institucion</th>
+            <th>medicamento</th>
+            <th>padecimiento</th>
+            <th>c1</th>
+            <th>c2</th>
+            <th>fecha</th>
+        </tr>
+    </thead>
+    <tbody> </tbody>
+</table-->
+
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+
+
+  <script>
+      var max_element = function(obj){
+        var vals = Object.values(obj);
+        return Object.keys(obj)[ vals.indexOf(Math.max(...vals)) ]
+      }
+
+      var top = function(data, limit, cb){
+        var redata = Object.assign({}, data), result = [];
+        for(var i = 0; i < limit; i++){
+            max = max_element(redata)
+            result.push(max)
+            delete redata[max]  
+        }
+        cb(result)
+      }
+
+
+      var draw_map = function(casos){
+        var height = 600;
+        var width = 900;
+        var projection = d3.geo.mercator();
+        var map = void 0;
+        var mexico = void 0;
+
+        var longitudes = function(data, res){
+          for(var key in data) res[key] = data[key].length
+          return res
+        }(casos, {})
+
+        var hover = function(d) {
+          var div = document.getElementById('tooltip')
+            , id = d.properties.NAME_1
+
+          div.style.display = 'none';
+          div.style.left = event.pageX + 50 +'px';
+          div.style.top = event.pageY - 100 + 'px';
+
+
+          var instituciones = {},  medicinas = {}, ins;
+          var out = "<h1>" + id + "</h1> <h3><b>" + longitudes[id]
+                  + "</b> Casos de desabasto </h3>"
+                  
+          for (var i in casos[id]){
+            ins = casos[id][i][4]
+
+            med = casos[id][i][5]
+
+            if ( ins in instituciones ) instituciones[ins]++
+            else instituciones[ins] = 1
+
+            if ( med in medicinas ) medicinas[med]++
+            else medicinas[med] = 1
+          }
+
+          for (var key in instituciones)
+              out += "<label><b>" + key + ": </b>"+ instituciones[key] + "</label>, "
+          
+          out = out.slice(0, -2)
+
+          out += "<p><b> Mayor desabasto</b><br>" + max_element(medicinas)
+              + "<small> [" + Math.max(...Object.values(medicinas)) + "]</small></p>"
+
+          div.innerHTML = out;
+          $("#tooltip").slideDown()
+        };
+  
+        var path = d3.geo.path().projection(projection);
+
+        var svg = d3.select("#map")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        d3.json('https://raw.githubusercontent.com/n4utilius/huachicol_med/master/mx.json', function(data) {
+          var states = topojson.feature(data, data.objects.MEX_adm1);
+
+          var b, s, t;
+          projection.scale(1).translate([0, 0]);
+          var b = path.bounds(states);
+          var s = .9 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+          var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+          projection.scale(s).translate(t);
+
+          map = svg.append('g').attr('class', 'boundary');
+          mexico = map.selectAll('path').data(states.features);
+
+          mexico.enter()
+             .append('path')
+             .attr('d', path)
+             .attr('class', 'estado')
+             .on('mouseover', hover)
+             .on('mouseout', function(){
+                var div = document.getElementById('tooltip')
+
+                div.style.left = '-300px';
+                div.style.top = '-300px';
+             })
+             .style('fill', function(d){
+                var id = d.properties.NAME_1
+
+                if(longitudes[id] >= 20) return "rgba(250,0,0,1)"
+                else if( longitudes[id] >= 10 ) return "#FFFF00"
+                else return "rgba(0,250,0,1)"
+             })
+             .attr('id', function(d){
+                return d.properties.NAME_1;
+             })
+
+          mexico.exit().remove();
+
+        });
+
+      }
+
+    $(document).ready(function(){
+
+        function csv2arr(allText) {
+          var allTextLines = allText.split(/\r\n|\n/);
+          var headers = allTextLines[0].split(',');
+          var lines = [];
+
+          for (var i=1; i<allTextLines.length; i++) { 
+              var data = allTextLines[i].split(',');
+              if (data.length == headers.length) {
+
+                  var tarr = [];
+                  for (var j=0; j<headers.length; j++) {
+                      tarr.push(data[j].split('\"').join(""));
+                  }
+                  lines.push(tarr);
+              }
+          }
+          return lines
+        }
+
+        $.ajax({
+          url: 'https://raw.githubusercontent.com/n4utilius/huachicol_med/master/data.csv',
+          success: function (data, e) {
+            if(data){
+              var data = csv2arr(data), casos = {}
+
+              for (i in data){
+                if( !(data[i][2] in casos) ) casos[ data[i][2] ] = [data[i]]
+                else casos[ data[i][2] ].push(data[i])
+              }
+
+              draw_map(casos)
+            }
+          },
+          async: false
+        });
+
+    })
+
+  </script>
+</body>
+
+

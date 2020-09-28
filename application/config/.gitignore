@@ -1,0 +1,5 @@
+./.htaccess 
+./db.ini 
+
+./omeka/db.ini 
+./application/config/*
