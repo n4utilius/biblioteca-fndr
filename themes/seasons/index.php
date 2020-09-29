@@ -8,8 +8,8 @@
 <!-- Featured Item -->
 <div id="featured-item">
     <h2><?php echo __('Featured Item'); ?></h2>
-    <?php //echo random_featured_items(1, true); ?>
-    <?php echo random_featured_items(1); ?>
+    <?php echo random_featured_items(1, true); ?>
+    <?php //echo random_featured_items(1); ?>
 </div><!--end featured-item-->
 <?php endif; ?>
 
@@ -33,7 +33,7 @@
 <?php
 $recentItems = get_theme_option('Homepage Recent Items');
 if ($recentItems === null || $recentItems === ''):
-    $recentItems = 3;
+    $recentItems = 10;
 else:
     $recentItems = (int) $recentItems;
 endif;
