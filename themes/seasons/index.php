@@ -9,7 +9,7 @@
 <div id="featured-item">
     <h2><?php echo __('Featured Item'); ?></h2>
     <?php //echo random_featured_items(1, true); ?>
-    <?php echo random_featured_items(1, true); ?>
+    <?php echo random_featured_items(1); ?>
 </div><!--end featured-item-->
 <?php endif; ?>
 
@@ -55,8 +55,8 @@ $(document).ready(function(){
 	var cont = $("#featured-item .item.record")
 
 	if( cont.children("a.image").length == 0 ){
-		var data = { url: cont.children("h3").children(a).attr("href"), text: cont.children("h3").children(a).text() }
-		cont.append('<a href="' + data.url + '" class="image"><img src="http://biblioteca.fundarlabs.org.mx/files/square_thumbnails/book-default.jpg" alt="' + data.text + '" title="' + data.text + '" ></a>')
+		var data = { url: cont.children("h3").children("a").attr("href"), text: cont.children("h3").children("a").text() }
+		cont.append('<a href="' + data.url + '" class="image"><img src="http://biblioteca.fundarlabs.org.mx/files/square_thumbnails/book-default.jpeg" alt="' + data.text + '" title="' + data.text + '" ></a>')
 	}
 })
 </script>
