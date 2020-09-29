@@ -32,6 +32,7 @@
     <?php 
     queue_js_file(array(
         'vendor/selectivizr',
+	'vendor/jquery',
         'vendor/jquery-accessibleMegaMenu',
         'vendor/respond',
         'jquery-extra-selectors',
