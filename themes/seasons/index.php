@@ -6,10 +6,14 @@
         .enable{ display: none;}
         .able{ display: inline-block;}
         .container { 
-            max-width: 2000px !important; 
-            padding: 0 75px 0 75px !important; 
+            max-width: 1600px !important; 
+            padding: 0 0px 0 180px !important; 
             margin-top: -220px !important;
         }
+
+        footer { display: block !important; }
+
+        .container.foot { margin-left: -85px !important; }
     </style>
 
     <meta charset="utf-8">
@@ -117,85 +121,83 @@
                         </div>
                     </div>      
                 <!-- Slider Shape -->
-                <div class="slider-shape d-none d-lg-block">
-                    <img class="slider-shape1" src="/themes/seasons/assets/img/hero/top-left-shape.png" alt="">
+                    <div class="slider-shape d-none d-lg-block">
+                        <img class="slider-shape1" src="/themes/seasons/assets/img/hero/top-left-shape.png" alt="">
+                    </div>
                 </div>
-            </div>
          
-            <footer>
-     
-                <!-- footer-bottom area -->
-                <div class="footer-bottom-area">
-                    <div class="container">
-                        <div class="footer-border">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="footer-copy-right text-left">
-                                        <p> <a href="/themes/seasons/assets/img/Reglamento-de-uso.pdf" target="blank">Guía de uso</a>
-                                        </p>
-        
+                <footer>
+                    <!-- footer-bottom area -->
+                    <div class="footer-bottom-area">
+                        <div class="container foot">
+                            <div class="footer-border">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="footer-copy-right text-left">
+                                            <p> <a href="/themes/seasons/assets/img/Reglamento-de-uso.pdf" target="blank">Guía de uso</a>
+                                            </p>
+            
+                                          </div>
                                       </div>
                                   </div>
                               </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </footer>   
-
+                            </div>
+                        </div>
+                    </div>
+                </footer>   
             </div>
         </main>
     </section>
 
     <!-- JS here -->
 
-        <script src="/themes/seasons/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <!-- Jquery, Popper, Bootstrap -->
-        <script src="/themes/seasons/assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="/themes/seasons/assets/js/popper.min.js"></script>
-        <script src="/themes/seasons/assets/js/bootstrap.min.js"></script>
-        <!-- Jquery Mobile Menu -->
-        <script src="/themes/seasons/assets/js/jquery.slicknav.min.js"></script>
+    <script src="/themes/seasons/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="/themes/seasons/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/themes/seasons/assets/js/popper.min.js"></script>
+    <script src="/themes/seasons/assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/themes/seasons/assets/js/jquery.slicknav.min.js"></script>
 
-        <!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="/themes/seasons/assets/js/owl.carousel.min.js"></script>
-        <script src="/themes/seasons/assets/js/slick.min.js"></script>
-        <!-- One Page, Animated-HeadLin -->
-        <script src="/themes/seasons/assets/js/wow.min.js"></script>
-        <script src="/themes/seasons/assets/js/animated.headline.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.magnific-popup.js"></script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="/themes/seasons/assets/js/owl.carousel.min.js"></script>
+    <script src="/themes/seasons/assets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="/themes/seasons/assets/js/wow.min.js"></script>
+    <script src="/themes/seasons/assets/js/animated.headline.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.magnific-popup.js"></script>
 
-        <!-- Date Picker -->
-        <script src="/themes/seasons/assets/js/gijgo.min.js"></script>
+    <!-- Date Picker -->
+    <script src="/themes/seasons/assets/js/gijgo.min.js"></script>
 
-        <!-- Video bg -->
-        <script src="/themes/seasons/assets/js/jquery.vide.js"></script>
+    <!-- Video bg -->
+    <script src="/themes/seasons/assets/js/jquery.vide.js"></script>
 
-        <!-- Nice-select, sticky -->
-        <script src="/themes/seasons/assets/js/jquery.nice-select.min.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.sticky.js"></script>
-        <!-- Progress -->
-        <script src="/themes/seasons/assets/js/jquery.barfiller.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="/themes/seasons/assets/js/jquery.nice-select.min.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="/themes/seasons/assets/js/jquery.barfiller.js"></script>
 
-        <!-- counter , waypoint,Hover Direction -->
-        <script src="/themes/seasons/assets/js/jquery.counterup.min.js"></script>
-        <script src="/themes/seasons/assets/js/waypoints.min.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.countdown.min.js"></script>
-        <script src="/themes/seasons/assets/js/hover-direction-snake.min.js"></script>
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="/themes/seasons/assets/js/jquery.counterup.min.js"></script>
+    <script src="/themes/seasons/assets/js/waypoints.min.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.countdown.min.js"></script>
+    <script src="/themes/seasons/assets/js/hover-direction-snake.min.js"></script>
 
-        <!-- contact js -->
-        <script src="/themes/seasons/assets/js/contact.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.form.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.validate.min.js"></script>
-        <script src="/themes/seasons/assets/js/mail-script.js"></script>
-        <script src="/themes/seasons/assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- contact js -->
+    <script src="/themes/seasons/assets/js/contact.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.form.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.validate.min.js"></script>
+    <script src="/themes/seasons/assets/js/mail-script.js"></script>
+    <script src="/themes/seasons/assets/js/jquery.ajaxchimp.min.js"></script>
 
-        <!-- Jquery Plugins, main Jquery -->    
-        <script src="/themes/seasons/assets/js/plugins.js"></script>
-        <script src="/themes/seasons/assets/js/main.js"></script>
+    <!-- Jquery Plugins, main Jquery -->    
+    <script src="/themes/seasons/assets/js/plugins.js"></script>
+    <script src="/themes/seasons/assets/js/main.js"></script>
 
-        </body>
-    </html>
+    </body>
+</html>
 
 <!-- Ola k ase -->
 
