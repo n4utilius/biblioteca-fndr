@@ -7,7 +7,7 @@
         .able{ display: inline-block;}
         .container { 
             max-width: 2000px !important; 
-            padding: 0 60px 0 60px !important; 
+            padding: 0 75px 0 75px !important; 
             margin-top: -220px !important;
         }
     </style>
@@ -97,7 +97,9 @@
                                     <div class="hero__caption">
                                        
                                         <h1 data-animation="fadeInLeft" data-delay=".6s ">Biblioteca</h1>
-                                        <p data-animation="fadeInLeft" data-delay=".8s">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                        <p data-animation="fadeInLeft" data-delay=".8s">Fundaritas, bienvenides a la Biblioteca de Fundar.  Aquí encontrarán las publicaciones que hemos producido en la organización (colección Fundar) y la lista de documentos que podrás consultar físicamente en la biblioteca (colección fija). 
+                                        </br> </br>
+                                            Este es un esfuerzo colectivo de fortalecimiento institucional que esperemos te sea útil. </p>
                                         <!-- Slider btn -->
                                         <div class="slider-btns">
                                             <!-- Hero-btn -->
@@ -295,7 +297,7 @@ $(document).ready(function(){
         setTimeout(function(){ 
             $("#preloader-active").css("display", "none")
             $("section#home").fadeIn("slow") 
-        }, 2000);
+        }, 1700);
 
         return false;
     })
