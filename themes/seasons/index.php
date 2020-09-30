@@ -5,7 +5,13 @@
     <style type="text/css">
         .enable{ display: none;}
         .able{ display: inline-block;}
+        .container { 
+            max-width: 2000px !important; 
+            padding: 0 60px 0 60px !important; 
+            margin-top: -220px !important;
+        }
     </style>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title> Biblioteca Fudar</title>
@@ -289,7 +295,7 @@ $(document).ready(function(){
         setTimeout(function(){ 
             $("#preloader-active").css("display", "none")
             $("section#home").fadeIn("slow") 
-        }, 1500);
+        }, 2000);
 
         return false;
     })
